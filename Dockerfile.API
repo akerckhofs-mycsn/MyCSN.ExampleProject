@@ -1,0 +1,22 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
+WORKDIR /app
+
+COPY ./MyCSN.ExampleProject.API.sln ./
+
+COPY ./MyCSN.ExampleProject.API/*.csproj ./MyCSN.ExampleProject.API/
+COPY ./MyCSN.ExampleProject.Domain/*.csproj ./MyCSN.ExampleProject.Domain/
+COPY ./MyCSN.ExampleProject.Data/*.csproj ./MyCSN.ExampleProject.Data/
+
+RUN dotnet restore ./MyCSN.ExampleProject.API.sln
+
+COPY ./MyCSN.ExampleProject.API/. ./MyCSN.ExampleProject.API/
+COPY ./MyCSN.ExampleProject.Domain/. /MyCSN.ExampleProject.Domain/
+COPY ./MyCSN.ExampleProject.Data/. ./MyCSN.ExampleProject.Data/
+
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS runtime
+WORKDIR /app
+COPY --from=build /app/out ./
+
+ENTRYPOINT ["dotnet", "MyCSN.ExampleProject.API.dll"]

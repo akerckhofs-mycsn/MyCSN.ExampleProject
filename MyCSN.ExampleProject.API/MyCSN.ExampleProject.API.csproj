@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>aspnet-MyCSN.ExampleProject.API-A941C3E2-687F-4AAB-8E6E-5A9FD9C86519</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0" NoWarn="NU1605" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.0" NoWarn="NU1605" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Identity.Web" Version="1.1.0" />
+        <PackageReference Include="Npgsql" Version="5.0.1.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MyCSN.ExampleProject.Data\MyCSN.ExampleProject.Data.csproj" />
+      <ProjectReference Include="..\MyCSN.ExampleProject.Domain\MyCSN.ExampleProject.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
